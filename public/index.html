@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookLeaf Author Support Portal</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2430;--mut:#667085;--line:#e3e6eb;--pri:#1f6f5c;--red:#c0392b;--amb:#b7791f}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--pri);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;opacity:.85}header a.on,header a:hover{opacity:1;text-decoration:underline}
+header .sp{flex:1}main{max-width:1100px;margin:20px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+h1,h2,h3{margin:.2em 0 .6em}h1{font-size:1.4rem}h3{font-size:1rem}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.8rem;color:var(--mut);text-transform:uppercase}tr.click{cursor:pointer}tr.click:hover{background:#f0f5f3}
+input,select,textarea,button{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;max-width:100%}
+textarea,input[type=text],input[type=email],input[type=password]{width:100%}
+button{background:var(--pri);color:#fff;border:0;cursor:pointer}button.sec{background:#fff;color:var(--ink);border:1px solid var(--line)}button:disabled{opacity:.5}
+label{display:block;font-weight:600;margin:10px 0 4px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.badge{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.78rem;background:#eef1f4;color:#344054;white-space:nowrap}
+.p-Critical{background:#fde8e6;color:var(--red);font-weight:700}.p-High{background:#fff1dc;color:var(--amb);font-weight:700}.p-Medium{background:#e8f0fe;color:#2b5cb8}.p-Low{background:#eef1f4}
+.s-Open{background:#e8f0fe;color:#2b5cb8}.s-In\ Progress{background:#fff1dc;color:var(--amb)}.s-Resolved{background:#e3f4ec;color:var(--pri)}
+.mut{color:var(--mut);font-size:.85rem}.err{color:var(--red)}.old{color:var(--red);font-weight:600}
+.msg{padding:10px 12px;border-radius:10px;margin:8px 0;background:#f2f4f7;white-space:pre-wrap}.msg.admin{background:#e3f4ec}.msg.note{background:#fff8e1;border:1px dashed #e0b84b}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:8px}.stats div{background:#f6f7f9;border-radius:8px;padding:8px}.stats b{display:block;font-size:1.05rem}
+details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}
+</style>
+</head>
+<body>
+<header id="nav"></header>
+<main id="main"></main>
+<script src="app.js" type="module"></script>
+</body>
+</html>
