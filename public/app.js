@@ -443,6 +443,9 @@ async function adminTicket(id) {
 }
 
 connectEvents();
-if (!location.hash)
+if (!S.token) {
+  if (location.hash !== "#/login") history.replaceState(null, "", "#/login");
+} else if (!location.hash || location.hash === "#/login") {
   location.hash = S.user?.role === "admin" ? "#/queue" : "#/books";
+}
 render();
