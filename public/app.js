@@ -111,13 +111,14 @@ function nav() {
   const link = (h, t, on) =>
     `<a href="#/${h}" class="${on ? "on" : ""}">${t}</a>`;
   const home = !S.user ? "#/login" : S.user.role === "admin" ? "#/queue" : "#/books";
-  $("#nav").innerHTML = logo(home) +
+  const signedInNav = S.user ?
       (S.user.role === "admin"
         ? link("queue", "Ticket queue", r !== "x")
         : link("books", "My Books", r === "books" || r === "") +
           link("new", "Submit a Query", r === "new") +
           link("tickets", "My Tickets", r === "tickets")) +
-      `<span class="sp"></span><span class="mut" style="color:#fff">${esc(S.user.name)} (${S.user.role})</span><a href="#" id="out">Log out</a>`;
+      `<span class="sp"></span><span class="mut" style="color:#fff">${esc(S.user.name)} (${S.user.role})</span><a href="#" id="out">Log out</a>` : "";
+  $("#nav").innerHTML = logo(home) + signedInNav;
   $("#out")?.addEventListener("click", (e) => {
     e.preventDefault();
     logout();
