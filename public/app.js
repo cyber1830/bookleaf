@@ -29,7 +29,7 @@ const esc = (s) =>
 const inr = (n) => (n == null ? "—" : "₹" + Number(n).toLocaleString("en-IN"));
 const when = (d) => new Date(d).toLocaleString();
 const badge = (t, cls = "") => `<span class="badge ${cls}">${esc(t)}</span>`;
-const logo = `<span class="brand"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="#f6c453" d="M7 5h13a5 5 0 0 1 5 5v16H12a5 5 0 0 1-5-5V5Z"/><path fill="#fff" d="M10 8h10v2H10zm0 5h10v2H10zm0 5h7v2h-7z"/><path fill="#d9a62e" d="M12 26h13v2H12a5 5 0 0 1-5-5h2a3 3 0 0 0 3 3Z"/></svg><span>BookLeaf</span></span>`;
+const logo = (href) => `<a class="brand" href="${href}"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="#f6c453" d="M7 5h13a5 5 0 0 1 5 5v16H12a5 5 0 0 1-5-5V5Z"/><path fill="#fff" d="M10 8h10v2H10zm0 5h10v2H10zm0 5h7v2h-7z"/><path fill="#d9a62e" d="M12 26h13v2H12a5 5 0 0 1-5-5h2a3 3 0 0 0 3 3Z"/></svg><span>BookLeaf</span></a>`;
 const opts = (list, sel, blank) =>
   (blank ? `<option value="">${blank}</option>` : "") +
   list
@@ -110,9 +110,8 @@ function nav() {
   const r = location.hash.split("/")[1] || "";
   const link = (h, t, on) =>
     `<a href="#/${h}" class="${on ? "on" : ""}">${t}</a>`;
-  $("#nav").innerHTML = !S.user
-    ? logo
-    : logo +
+  const home = !S.user ? "#/login" : S.user.role === "admin" ? "#/queue" : "#/books";
+  $("#nav").innerHTML = logo(home) +
       (S.user.role === "admin"
         ? link("queue", "Ticket queue", r !== "x")
         : link("books", "My Books", r === "books" || r === "") +
