@@ -1,11 +1,11 @@
-import { DatabaseSync } from 'node:sqlite'; // built into Node >= 22.13: no native build step
-import fs from 'node:fs';
-import path from 'node:path';
-import { config } from './config.js';
+import { DatabaseSync } from "node:sqlite"; // built into Node >= 22.13: no native build step
+import fs from "node:fs";
+import path from "node:path";
+import { config } from "./config.js";
 
 fs.mkdirSync(path.dirname(config.dbPath), { recursive: true });
 export const db = new DatabaseSync(config.dbPath);
-db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;');
+db.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");
 
 db.exec(`
 CREATE TABLE IF NOT EXISTS users (
@@ -60,4 +60,8 @@ CREATE TABLE IF NOT EXISTS ai_drafts (
   input_hash TEXT NOT NULL, body TEXT NOT NULL, model TEXT NOT NULL, created_at TEXT NOT NULL
 );
 `);
-try { db.exec('ALTER TABLE tickets ADD COLUMN attachment_path TEXT'); } catch { /* already migrated */ }
+try {
+  db.exec("ALTER TABLE tickets ADD COLUMN attachment_path TEXT");
+} catch {
+  /* already migrated */
+}

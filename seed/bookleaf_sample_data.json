@@ -67,7 +67,12 @@
           "royalty_pending": 5280,
           "last_royalty_payout_date": "2025-09-01",
           "print_partner": "Repro India",
-          "available_on": ["Amazon India", "Flipkart", "Amazon US", "BookLeaf Store"]
+          "available_on": [
+            "Amazon India",
+            "Flipkart",
+            "Amazon US",
+            "BookLeaf Store"
+          ]
         },
         {
           "book_id": "BK004",
@@ -84,7 +89,13 @@
           "royalty_pending": 7744,
           "last_royalty_payout_date": "2025-11-15",
           "print_partner": "In-House",
-          "available_on": ["Amazon India", "Flipkart", "Amazon US", "Amazon UK", "BookLeaf Store"]
+          "available_on": [
+            "Amazon India",
+            "Flipkart",
+            "Amazon US",
+            "Amazon UK",
+            "BookLeaf Store"
+          ]
         }
       ]
     },
@@ -253,7 +264,12 @@
           "royalty_pending": 4175,
           "last_royalty_payout_date": "2025-11-15",
           "print_partner": "Repro India",
-          "available_on": ["Amazon India", "Flipkart", "Amazon US", "BookLeaf Store"]
+          "available_on": [
+            "Amazon India",
+            "Flipkart",
+            "Amazon US",
+            "BookLeaf Store"
+          ]
         },
         {
           "book_id": "BK012",
@@ -385,7 +401,12 @@
           "royalty_pending": 2540,
           "last_royalty_payout_date": "2025-11-15",
           "print_partner": "Repro India",
-          "available_on": ["Amazon India", "Flipkart", "Amazon US", "BookLeaf Store"]
+          "available_on": [
+            "Amazon India",
+            "Flipkart",
+            "Amazon US",
+            "BookLeaf Store"
+          ]
         },
         {
           "book_id": "BK018",

@@ -1,7 +1,22 @@
-import { z } from 'zod';
-import { CATEGORIES, PRIORITIES, STATUSES } from './domain.js';
+import { z } from "zod";
+import { CATEGORIES, PRIORITIES, STATUSES } from "./domain.js";
 
-export const loginSchema = z.object({ email: z.string().email(), password: z.string().min(1) });
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});
+export const signupSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(8)
+    .max(128)
+    .regex(/[A-Z]/, "Password needs an uppercase letter")
+    .regex(/[a-z]/, "Password needs a lowercase letter")
+    .regex(/[0-9]/, "Password needs a number")
+    .regex(/[^A-Za-z0-9]/, "Password needs a special character"),
+});
 
 export const createTicketSchema = z.object({
   bookId: z.string().min(1).nullable().optional(), // null/absent = General / Account Level
@@ -10,25 +25,32 @@ export const createTicketSchema = z.object({
   attachmentName: z.string().max(255).optional(),
 });
 
-export const messageSchema = z.object({ body: z.string().trim().min(1).max(5000) });
-export const replySchema = messageSchema.extend({ status: z.enum(STATUSES).optional() });
+export const messageSchema = z.object({
+  body: z.string().trim().min(1).max(5000),
+});
+export const replySchema = messageSchema.extend({
+  status: z.enum(STATUSES).optional(),
+});
 
 export const patchTicketSchema = z
   .object({
     status: z.enum(STATUSES),
     category: z.enum(CATEGORIES),
     priority: z.enum(PRIORITIES),
-    assignedTo: z.union([z.literal('me'), z.null()]),
+    assignedTo: z.union([z.literal("me"), z.null()]),
   })
   .partial()
-  .refine((v) => Object.keys(v).length > 0, 'Provide at least one field to update');
+  .refine(
+    (v) => Object.keys(v).length > 0,
+    "Provide at least one field to update",
+  );
 
-const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
+const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD");
 export const adminListQuery = z.object({
   status: z.enum(STATUSES).optional(),
   category: z.enum(CATEGORIES).optional(),
   priority: z.enum(PRIORITIES).optional(),
-  assigned: z.enum(['me', 'unassigned']).optional(),
+  assigned: z.enum(["me", "unassigned"]).optional(),
   from: date.optional(),
   to: date.optional(),
 });
